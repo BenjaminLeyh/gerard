@@ -93,7 +93,7 @@ const DashboardPage = () => {
 
       {/* Activity Rings */}
       <motion.div variants={itemVariants} className="ios-card mb-6">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-6">
           <div className="flex-1">
             <h3 className="font-semibold text-foreground mb-4">Activité du jour</h3>
             <div className="space-y-3">
