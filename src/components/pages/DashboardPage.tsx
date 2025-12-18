@@ -108,7 +108,7 @@ const DashboardPage = () => {
                 <span className="text-sm font-medium ml-auto">{healthMetrics.activeMinutes}/{healthMetrics.activeMinutesGoal} min</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-primary" />
+                <div className="w-3 h-3 rounded-full bg-health-blue" />
                 <span className="text-sm text-muted-foreground">Pas</span>
                 <span className="text-sm font-medium ml-auto">{healthMetrics.steps.toLocaleString()}/{healthMetrics.stepsGoal.toLocaleString()}</span>
               </div>
