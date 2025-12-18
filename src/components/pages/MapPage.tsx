@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { MapPin, Navigation, Plus, Edit2, Shield, Clock, ChevronRight, Home, Trees, Stethoscope, Locate } from 'lucide-react';
 import StatusBadge from '@/components/ui/StatusBadge';
 import { locationData, safeZones, locationHistory, pet } from '@/data/mockData';
+import {useTheme} from "@/ThemeContext.tsx";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -25,6 +26,8 @@ const zoneIcons: Record<string, typeof Home> = {
 
 const MapPage = () => {
   const [selectedZone, setSelectedZone] = useState<string | null>(null);
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
 
   return (
     <motion.div
@@ -40,84 +43,100 @@ const MapPage = () => {
       </motion.div>
 
       {/* Map View */}
+      {/* Map View */}
       <motion.div variants={itemVariants} className="ios-card mb-6 p-0 overflow-hidden">
-        <div className="relative h-64 bg-gradient-to-br from-primary/5 to-primary/10">
-          {/* Mock Map Grid */}
+        <div className="relative h-64 overflow-hidden">
+          {/* Background Map Image */}
           <div className="absolute inset-0">
-            <svg viewBox="0 0 100 100" className="w-full h-full" preserveAspectRatio="none">
-              <defs>
-                <pattern id="mapGrid" width="5" height="5" patternUnits="userSpaceOnUse">
-                  <path d="M 5 0 L 0 0 0 5" fill="none" stroke="currentColor" strokeWidth="0.2" className="text-primary/20" />
-                </pattern>
-              </defs>
-              <rect width="100" height="100" fill="url(#mapGrid)" />
-              
-              {/* Safe Zone Circle */}
-              <circle 
-                cx="50" 
-                cy="50" 
-                r="20" 
-                fill="hsl(var(--health-green))" 
-                fillOpacity="0.1" 
-                stroke="hsl(var(--health-green))" 
-                strokeWidth="0.5"
-                strokeDasharray="2,2"
-              />
-              
-              {/* Path trace */}
-              <path
-                d="M 30 70 Q 35 60 40 55 Q 45 50 50 50 Q 55 48 58 52 Q 60 55 50 50"
-                fill="none"
-                stroke="hsl(var(--primary))"
-                strokeWidth="0.8"
-                strokeLinecap="round"
-                strokeDasharray="2,1"
-                opacity="0.6"
-              />
-            </svg>
+            <img
+                src="/gerard/map-background.jpg"
+                alt="Map"
+                className={`w-full h-full object-cover transition-all duration-300 ${
+                    isDark ? 'brightness-[0.4] contrast-110 saturate-75' : 'brightness-100'
+                }`}
+            />
+
+            {/* Overlay for better contrast */}
+            <div className={`absolute inset-0 ${
+                isDark ? 'bg-black/30' : 'bg-white/10'
+            }`} />
           </div>
 
-          {/* Pet Location Pin */}
+          {/* Safe Zone Circle */}
+          <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100"
+               preserveAspectRatio="xMidYMid slice">
+            {/* Safe Zone - Cercle parfait */}
+            <circle
+                cx="50"
+                cy="50"
+                r="20"
+                fill="hsl(var(--health-green))"
+                fillOpacity="0.12"
+                stroke="hsl(var(--health-green))"
+                strokeWidth="0.5"
+                strokeDasharray="2,2"
+            />
+
+            {/* Path trace - Suit exactement les points */}
+            <path
+                d="M 41 75 Q 44 70 47 65 Q 50.5 59.5 54 54 L 50 50"
+                fill="none"
+                stroke="hsl(var(--primary))"
+                strokeWidth="1"
+                strokeLinecap="round"
+                opacity="0.8"
+            />
+
+            {/* Points de passage sur le chemin */}
+            <circle cx="41" cy="75" r="1.2" fill="hsl(var(--primary))" opacity="0.9"/>
+            <circle cx="47" cy="65" r="1.2" fill="hsl(var(--primary))" opacity="0.8"/>
+            <circle cx="54" cy="54" r="1.2" fill="hsl(var(--primary))" opacity="0.7"/>
+            <circle cx="50" cy="50" r="1.5" fill="hsl(var(--primary))" opacity="1"/>
+          </svg>
+
+
+          {/* Pet Location Pin avec pulse */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <motion.div
-              animate={{ 
-                scale: [1, 1.2, 1],
-              }}
-              transition={{ 
-                repeat: Infinity, 
-                duration: 2,
-                ease: 'easeInOut'
-              }}
-              className="relative"
-            >
-              <div 
-                className="absolute -inset-4 rounded-full opacity-30"
-                style={{ 
-                  background: 'radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)'
+                animate={{
+                  scale: [1, 1.2, 1],
                 }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 2,
+                  ease: 'easeInOut'
+                }}
+                className="relative"
+            >
+              <div
+                  className="absolute -inset-4 rounded-full opacity-30"
+                  style={{
+                    background: 'radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)'
+                  }}
               />
               <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center shadow-lg">
-                <MapPin className="w-4 h-4 text-primary-foreground" />
+                <MapPin className="w-4 h-4 text-primary-foreground"/>
               </div>
             </motion.div>
           </div>
-
           {/* Map Controls */}
           <div className="absolute top-4 right-4 flex flex-col gap-2">
-            <button className="w-10 h-10 bg-card/90 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-md hover:bg-card transition-colors">
-              <Locate className="w-5 h-5 text-primary" />
+          <button
+                className="w-10 h-10 bg-card/95 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg hover:bg-card transition-colors border border-border/50">
+              <Locate className="w-5 h-5 text-primary"/>
             </button>
-            <button className="w-10 h-10 bg-card/90 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-md hover:bg-card transition-colors">
-              <Navigation className="w-5 h-5 text-foreground" />
+            <button
+                className="w-10 h-10 bg-card/95 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg hover:bg-card transition-colors border border-border/50">
+              <Navigation className="w-5 h-5 text-foreground"/>
             </button>
           </div>
 
           {/* Status Badge */}
           <div className="absolute bottom-4 left-4">
-            <StatusBadge 
-              status={locationData.isInSafeZone ? 'success' : 'warning'} 
-              label={locationData.isInSafeZone ? 'Zone sécurisée' : 'Hors zone'}
-              pulse
+            <StatusBadge
+                status={locationData.isInSafeZone ? 'success' : 'warning'}
+                label={locationData.isInSafeZone ? 'Zone sécurisée' : 'Hors zone'}
+                pulse
             />
           </div>
         </div>

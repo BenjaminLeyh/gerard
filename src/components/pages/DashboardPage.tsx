@@ -6,6 +6,7 @@ import MetricCard from '@/components/ui/MetricCard';
 import AlertCard from '@/components/ui/AlertCard';
 import ActivityRings from '@/components/ui/ActivityRings';
 import { pet, healthMetrics, locationData, alerts, statusLabels } from '@/data/mockData';
+import {useTheme} from "@/ThemeContext.tsx";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -28,6 +29,9 @@ const DashboardPage = () => {
     { value: healthMetrics.activeMinutes, goal: healthMetrics.activeMinutesGoal, color: '#30D158', label: 'Activité' },
     { value: healthMetrics.steps, goal: healthMetrics.stepsGoal, color: '#0A84FF', label: 'Pas' },
   ];
+
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
 
   return (
     <motion.div
@@ -161,21 +165,27 @@ const DashboardPage = () => {
         </div>
         <div className="relative h-32 rounded-xl overflow-hidden bg-gradient-to-br from-primary/10 to-primary/5">
           {/* Mock Map Background */}
-          <div className="absolute inset-0 opacity-30">
-            <svg viewBox="0 0 100 100" className="w-full h-full">
-              <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
-                <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-primary/30" />
-              </pattern>
-              <rect width="100" height="100" fill="url(#grid)" />
-            </svg>
+          <div className="absolute inset-0">
+            <img
+                src="/gerard/map-background.jpg"
+                alt="Map"
+                className={`w-full h-full object-cover transition-all duration-300 ${
+                    isDark ? 'brightness-[0.4] contrast-110 saturate-75' : 'brightness-100'
+                }`}
+            />
+
+            {/* Overlay for better contrast */}
+            <div className={`absolute inset-0 ${
+                isDark ? 'bg-black/30' : 'bg-white/10'
+            }`}/>
           </div>
           {/* Pin */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <motion.div
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ repeat: Infinity, duration: 2 }}
-              className="w-4 h-4 bg-primary rounded-full shadow-lg"
-              style={{ boxShadow: '0 0 0 8px rgba(10, 132, 255, 0.2)' }}
+                animate={{scale: [1, 1.2, 1]}}
+                transition={{repeat: Infinity, duration: 2}}
+                className="w-4 h-4 bg-primary rounded-full shadow-lg"
+                style={{boxShadow: '0 0 0 8px rgba(10, 132, 255, 0.2)'}}
             />
           </div>
         </div>

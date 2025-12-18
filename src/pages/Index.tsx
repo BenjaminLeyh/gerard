@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import MobileContainer from '@/components/layout/MobileContainer';
 import TabBar from '@/components/layout/TabBar';
@@ -16,6 +16,10 @@ const pageVariants = {
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [activeTab]);
 
   const renderPage = () => {
     switch (activeTab) {
