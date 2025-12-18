@@ -59,14 +59,6 @@ const ActivityRings = ({ rings, size = 120, strokeWidth = 12, className = '' }: 
         })}
       </svg>
       
-      {/* Center content */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="text-center">
-          <span className="text-2xl font-bold text-foreground">
-            {Math.round((rings[0].value / rings[0].goal) * 100)}%
-          </span>
-        </div>
-      </div>
     </div>
   );
 };
