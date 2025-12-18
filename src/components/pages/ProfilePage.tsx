@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   ChevronRight, Bell, Moon, Sun, Bluetooth, Battery, 
@@ -9,6 +8,8 @@ import PetAvatar from '@/components/ui/PetAvatar';
 import StatusBadge from '@/components/ui/StatusBadge';
 import { pet } from '@/data/mockData';
 import { Switch } from '@/components/ui/switch';
+import {useTheme} from "@/ThemeContext.tsx";
+import {useState} from "react";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -70,7 +71,7 @@ const SettingItem = ({
 );
 
 const ProfilePage = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const { theme, toggleTheme } = useTheme();
   const [notifications, setNotifications] = useState(true);
 
   return (
@@ -189,12 +190,12 @@ const ProfilePage = () => {
             onToggle={() => setNotifications(!notifications)}
           />
           <SettingItem
-            icon={darkMode ? Moon : Sun}
-            iconColor="text-health-purple"
-            label="Mode sombre"
-            hasToggle
-            toggleValue={darkMode}
-            onToggle={() => setDarkMode(!darkMode)}
+              icon={theme === 'dark' ? Moon : Sun}
+              iconColor="text-health-purple"
+              label="Mode sombre"
+              hasToggle
+              toggleValue={theme === 'dark'}
+              onToggle={toggleTheme}
           />
           <SettingItem
             icon={Settings}

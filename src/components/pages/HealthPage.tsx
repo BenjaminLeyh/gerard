@@ -168,16 +168,16 @@ const HealthPage = () => {
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
-                  data={sleepData}
-                  cx="50%"
-                  cy="50%"
-                  innerRadius={25}
-                  outerRadius={40}
-                  paddingAngle={2}
-                  dataKey="hours"
+                    data={sleepData}
+                    cx="50%"
+                    cy="50%"
+                    innerRadius={25}
+                    outerRadius={40}
+                    dataKey="hours"
+                    stroke="none"
                 >
                   {sleepData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.color} />
+                      <Cell key={`cell-${index}`} fill={entry.color}/>
                   ))}
                 </Pie>
               </PieChart>

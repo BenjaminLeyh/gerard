@@ -4,11 +4,11 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* Premium Pet Collar App - iOS-inspired Design System */
+/* Premium Pet Collar App - iOS-inspired Design System with Gold Primary */
 
 @layer base {
   :root {
-    /* Light Mode - Clean, Premium Apple-style */
+    /* Light Mode - Premium Gold Theme */
     --background: 0 0% 98%;
     --foreground: 220 13% 13%;
 
@@ -18,8 +18,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 13% 13%;
 
-    /* Primary - iOS Blue */
-    --primary: 211 100% 50%;
+    /* Primary - Premium Gold */
+    --primary: 43 96% 56%;
     --primary-foreground: 0 0% 100%;
 
     /* Secondary - Soft Gray */
@@ -30,16 +30,16 @@
     --muted: 220 14% 96%;
     --muted-foreground: 220 9% 46%;
 
-    /* Accent - Soft highlight */
-    --accent: 211 100% 96%;
-    --accent-foreground: 211 100% 40%;
+    /* Accent - Lighter Gold */
+    --accent: 43 96% 96%;
+    --accent-foreground: 43 96% 40%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: 211 100% 50%;
+    --ring: 43 96% 56%;
 
     --radius: 1rem;
 
@@ -58,9 +58,9 @@
 
     /* Gradients */
     --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(220 14% 99%) 100%);
-    --gradient-primary: linear-gradient(135deg, hsl(211 100% 55%) 0%, hsl(211 100% 45%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(43 96% 60%) 0%, hsl(43 96% 50%) 100%);
     --gradient-health: linear-gradient(135deg, hsl(142 71% 50%) 0%, hsl(142 71% 40%) 100%);
-    
+
     /* Shadows */
     --shadow-sm: 0 1px 2px 0 hsl(220 13% 13% / 0.03);
     --shadow-md: 0 4px 6px -1px hsl(220 13% 13% / 0.05), 0 2px 4px -2px hsl(220 13% 13% / 0.05);
@@ -69,12 +69,12 @@
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-primary: 43 96% 56%;
+    --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-ring: 43 96% 56%;
   }
 
   .dark {
@@ -87,29 +87,33 @@
     --popover: 220 13% 11%;
     --popover-foreground: 220 9% 94%;
 
-    --primary: 211 100% 55%;
-    --primary-foreground: 0 0% 100%;
+    /* Primary - Gold (slightly adjusted for dark mode) */
+    --primary: 43 96% 50%;
+    --primary-foreground: 220 13% 8%;
 
+    /* Secondary - Soft Gray */
     --secondary: 220 13% 16%;
     --secondary-foreground: 220 9% 80%;
 
+    /* Muted - Subtle backgrounds */
     --muted: 220 13% 16%;
     --muted-foreground: 220 9% 56%;
 
-    --accent: 211 100% 15%;
-    --accent-foreground: 211 100% 70%;
+    /* Accent - Darker Gold for dark mode */
+    --accent: 43 96% 15%;
+    --accent-foreground: 43 96% 70%;
 
     --destructive: 0 84% 50%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 220 13% 18%;
     --input: 220 13% 18%;
-    --ring: 211 100% 55%;
+    --ring: 43 96% 50%;
 
     /* Dark mode gradients */
     --gradient-card: linear-gradient(145deg, hsl(220 13% 12%) 0%, hsl(220 13% 10%) 100%);
-    --gradient-primary: linear-gradient(135deg, hsl(211 100% 60%) 0%, hsl(211 100% 50%) 100%);
-    
+    --gradient-primary: linear-gradient(135deg, hsl(43 96% 55%) 0%, hsl(43 96% 45%) 100%);
+
     /* Dark mode shadows */
     --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.2);
     --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.25), 0 2px 4px -2px hsl(0 0% 0% / 0.2);
@@ -118,12 +122,12 @@
 
     --sidebar-background: 220 13% 8%;
     --sidebar-foreground: 220 9% 94%;
-    --sidebar-primary: 211 100% 55%;
-    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-primary: 43 96% 50%;
+    --sidebar-primary-foreground: 220 13% 8%;
     --sidebar-accent: 220 13% 16%;
     --sidebar-accent-foreground: 220 9% 94%;
     --sidebar-border: 220 13% 18%;
-    --sidebar-ring: 211 100% 55%;
+    --sidebar-ring: 43 96% 50%;
   }
 }
 

@@ -42,13 +42,6 @@ const TabBar = ({ activeTab, onTabChange }: TabBarProps) => {
                   }`}
                   strokeWidth={isActive ? 2.5 : 2}
                 />
-                {isActive && (
-                  <motion.div
-                    layoutId="tabIndicator"
-                    className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-primary rounded-full"
-                    transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                  />
-                )}
               </motion.div>
               <span className={`text-[10px] mt-1 font-medium transition-colors duration-200 ${
                 isActive ? 'text-primary' : 'text-muted-foreground'
