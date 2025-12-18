@@ -2,95 +2,128 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Premium Pet Collar App - iOS-inspired Design System */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Light Mode - Clean, Premium Apple-style */
+    --background: 0 0% 98%;
+    --foreground: 220 13% 13%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 220 13% 13%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 220 13% 13%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - iOS Blue */
+    --primary: 211 100% 50%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Soft Gray */
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 13% 26%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted - Subtle backgrounds */
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - Soft highlight */
+    --accent: 211 100% 96%;
+    --accent-foreground: 211 100% 40%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 211 100% 50%;
 
-    --radius: 0.5rem;
+    --radius: 1rem;
+
+    /* Custom Colors for Health Metrics */
+    --health-green: 142 71% 45%;
+    --health-orange: 25 95% 53%;
+    --health-red: 0 84% 60%;
+    --health-blue: 211 100% 50%;
+    --health-purple: 271 91% 65%;
+    --health-pink: 330 81% 60%;
+
+    /* Activity Ring Colors */
+    --ring-move: 0 84% 60%;
+    --ring-exercise: 142 71% 45%;
+    --ring-stand: 199 89% 48%;
+
+    /* Gradients */
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(220 14% 99%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(211 100% 55%) 0%, hsl(211 100% 45%) 100%);
+    --gradient-health: linear-gradient(135deg, hsl(142 71% 50%) 0%, hsl(142 71% 40%) 100%);
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(220 13% 13% / 0.03);
+    --shadow-md: 0 4px 6px -1px hsl(220 13% 13% / 0.05), 0 2px 4px -2px hsl(220 13% 13% / 0.05);
+    --shadow-lg: 0 10px 15px -3px hsl(220 13% 13% / 0.08), 0 4px 6px -4px hsl(220 13% 13% / 0.05);
+    --shadow-card: 0 2px 8px -2px hsl(220 13% 13% / 0.08), 0 4px 16px -4px hsl(220 13% 13% / 0.06);
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 220 13% 8%;
+    --foreground: 220 9% 94%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 220 13% 11%;
+    --card-foreground: 220 9% 94%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 220 13% 11%;
+    --popover-foreground: 220 9% 94%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 211 100% 55%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 220 13% 16%;
+    --secondary-foreground: 220 9% 80%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 220 13% 16%;
+    --muted-foreground: 220 9% 56%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 211 100% 15%;
+    --accent-foreground: 211 100% 70%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 50%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --border: 220 13% 18%;
+    --input: 220 13% 18%;
+    --ring: 211 100% 55%;
+
+    /* Dark mode gradients */
+    --gradient-card: linear-gradient(145deg, hsl(220 13% 12%) 0%, hsl(220 13% 10%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(211 100% 60%) 0%, hsl(211 100% 50%) 100%);
+    
+    /* Dark mode shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.2);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.25), 0 2px 4px -2px hsl(0 0% 0% / 0.2);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.3), 0 4px 6px -4px hsl(0 0% 0% / 0.2);
+    --shadow-card: 0 2px 8px -2px hsl(0 0% 0% / 0.3), 0 4px 16px -4px hsl(0 0% 0% / 0.2);
+
+    --sidebar-background: 220 13% 8%;
+    --sidebar-foreground: 220 9% 94%;
+    --sidebar-primary: 211 100% 55%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 220 13% 16%;
+    --sidebar-accent-foreground: 220 9% 94%;
+    --sidebar-border: 220 13% 18%;
+    --sidebar-ring: 211 100% 55%;
   }
 }
 
@@ -100,6 +133,114 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  /* iOS-style Cards */
+  .ios-card {
+    @apply bg-card rounded-2xl p-4 shadow-sm;
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Premium Button Styles */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground rounded-xl px-6 py-3 font-semibold;
+    background: var(--gradient-primary);
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .btn-primary:active {
+    transform: scale(0.98);
+  }
+
+  /* Activity Ring Base */
+  .activity-ring {
+    @apply relative;
+    --ring-size: 100px;
+    --ring-thickness: 10px;
+  }
+
+  /* Status Badge */
+  .status-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .status-badge-success {
+    @apply status-badge bg-[hsl(var(--health-green)/0.15)] text-[hsl(var(--health-green))];
+  }
+
+  .status-badge-warning {
+    @apply status-badge bg-[hsl(var(--health-orange)/0.15)] text-[hsl(var(--health-orange))];
+  }
+
+  .status-badge-danger {
+    @apply status-badge bg-[hsl(var(--health-red)/0.15)] text-[hsl(var(--health-red))];
+  }
+
+  /* Metric Card */
+  .metric-card {
+    @apply ios-card flex flex-col gap-2;
+  }
+
+  .metric-value {
+    @apply text-3xl font-bold tracking-tight;
+  }
+
+  .metric-label {
+    @apply text-sm text-muted-foreground font-medium;
+  }
+
+  /* Tab Bar Style */
+  .tab-bar {
+    @apply fixed bottom-0 left-0 right-0 bg-card/80 backdrop-blur-xl border-t border-border;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  /* Pull to Refresh */
+  .pull-to-refresh {
+    @apply overflow-y-auto overscroll-contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Skeleton Loader */
+  .skeleton {
+    @apply bg-muted animate-pulse rounded-lg;
+  }
+
+  /* Glass Effect */
+  .glass {
+    @apply bg-card/60 backdrop-blur-xl border border-border/50;
+  }
+}
+
+@layer utilities {
+  /* Safe Area Padding */
+  .safe-top {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  /* Hide scrollbar but allow scrolling */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
